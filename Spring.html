@@ -1,0 +1,30 @@
+# SPRING ANIMATION HTML
+st.markdown("---")
+st.subheader("Spring Animation")
+
+# Simple HTML animation
+st.components.v1.html("""
+<div style="text-align: center;">
+    <div id="spring" style="margin: 20px; font-size: 24px;">⚫</div>
+    <button onclick="moveSpring()">Animate Spring</button>
+</div>
+
+<script>
+function moveSpring() {
+    const spring = document.getElementById('spring');
+    let position = 0;
+    let direction = 1;
+    
+    const animate = setInterval(() => {
+        position += direction * 10;
+        spring.style.transform = `translateY(${position}px)`;
+        
+        if (position >= 50 || position <= -50) {
+            direction *= -1;
+        }
+    }, 100);
+    
+    setTimeout(() => clearInterval(animate), 3000);
+}
+</script>
+""", height=200)
